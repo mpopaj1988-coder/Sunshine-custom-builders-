@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+*.tsbuildinfo
+vite.config.d.ts
+
+# Full-resolution source photos are kept locally only; committed assets are
+# the optimized outputs from `npm run optimize-images`.
+src/assets/kitchen/source/
+
+.DS_Store
