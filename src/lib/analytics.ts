@@ -1,9 +1,11 @@
 /**
  * Thin wrapper around GA4 / Google Ads gtag.js.
  *
- * No measurement ID is hard-coded here — nothing fires until you set
- * VITE_GA_MEASUREMENT_ID (and optionally VITE_GOOGLE_ADS_ID for a separate
- * conversion action) in your deployment environment. See README for setup.
+ * GA4 measurement IDs aren't secret (every GA4 site exposes them in its page
+ * source), so the real one is baked in as a default below. Override it with
+ * VITE_GA_MEASUREMENT_ID if you ever need a different property (e.g. a
+ * staging site). VITE_GOOGLE_ADS_ID stays opt-in for once a Google Ads
+ * account exists and gets linked. See README for setup notes.
  */
 
 declare global {
@@ -13,7 +15,9 @@ declare global {
   }
 }
 
-const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+const DEFAULT_GA_ID = "G-7SF9KSH92Z"; // Sunshine Custom Builders GA4 property
+
+const GA_ID = (import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined) || DEFAULT_GA_ID;
 const ADS_ID = import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined;
 
 let initialized = false;

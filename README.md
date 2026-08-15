@@ -10,13 +10,13 @@ in Tampa Bay.
 - `/` is a minimal placeholder — this repo currently only builds out the ad landing page, not
   a full replacement for the existing sunshinecustom.homes site.
 
-## Before you turn on ad spend — 3 things to connect
+## Before you turn on ad spend — 2 things left to connect
 
 This page was built without access to the live sunshinecustom.homes site or its existing
-tools (network access to that domain was blocked in the build environment), so a few things
-are intentionally **placeholders** you need to wire up:
+tools (network access to that domain was blocked in the build environment), so a couple
+things are still **placeholders** you need to wire up:
 
-### 1. Where form submissions go (required)
+### 1. Where form submissions go (required — not done yet)
 Right now, submitting the form does **not** send the lead anywhere — it just logs a warning to
 the browser console. You need a destination. The easiest no-backend options:
 - [Web3Forms](https://web3forms.com) (free, just an access key)
@@ -28,22 +28,25 @@ Once you have an endpoint URL, set it as an environment variable when you build/
 VITE_LEAD_ENDPOINT=https://your-endpoint-here
 ```
 
-### 2. Google Ads / GA4 conversion tracking (required for ad spend to be measurable)
-No analytics ID is hard-coded. Set one or both of these env vars and the page will load
-`gtag.js` and fire events automatically — nothing loads or fires until you set them:
-```
-VITE_GA_MEASUREMENT_ID=G-XXXXXXX     # GA4 measurement ID
-VITE_GOOGLE_ADS_ID=AW-XXXXXXXXX      # Google Ads conversion ID, if different from GA4
-```
-Events already wired up and ready to report as conversions in Google Ads:
+### 2. GA4 is connected — Google Ads is the next step
+GA4 measurement ID `G-7SF9KSH92Z` is already wired into `src/lib/analytics.ts` and live in
+every build, so page views and these events are already being recorded in your GA4 property:
+
 | Event | Fires when |
 |---|---|
 | `phone_click` | Someone taps/clicks a "Call 248-766-2957" link (header, hero, footer, mobile bar, final CTA) |
 | `estimate_cta_click` | Someone clicks a "Request a Free Estimate" button |
 | `form_submit` | The lead form is successfully submitted |
 
-If the existing sunshinecustom.homes site already has GTM/GA4/Google Ads installed, use
-**those same IDs** here rather than creating new ones — that keeps all traffic in one account.
+To make these count as **conversions in Google Ads** (so ad spend actually optimizes toward
+leads), two things still need doing in the Google UI — no code changes needed for either:
+1. In GA4 (**Admin → Events**), mark `form_submit` (and optionally `phone_click`,
+   `estimate_cta_click`) as a **key event**.
+2. Create your Google Ads account, then **link it to this GA4 property** (Google Ads →
+   Tools → Linked accounts → Google Analytics) and import the key event as a conversion action.
+
+If a Google Ads account already exists and gets its own separate conversion ID
+(`AW-XXXXXXXXX`) later, set it as `VITE_GOOGLE_ADS_ID` and it'll load automatically too.
 
 ### 3. Brand assets (cosmetic, not blocking)
 No logo or verified brand colors were available, so the page uses a placeholder navy/gold
