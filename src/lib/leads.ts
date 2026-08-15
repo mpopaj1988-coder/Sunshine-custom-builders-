@@ -11,7 +11,7 @@ export interface LeadFormData {
 // Web3Forms access keys are designed to be used from the browser (like a GA4
 // measurement ID) — see https://web3forms.com. Get one for free at
 // web3forms.com and drop it in here, or override via VITE_WEB3FORMS_ACCESS_KEY.
-const DEFAULT_WEB3FORMS_ACCESS_KEY = "";
+const DEFAULT_WEB3FORMS_ACCESS_KEY = "5d7df423-b082-49c3-8af1-2b12ea6a3b92";
 
 const ACCESS_KEY =
   (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) || DEFAULT_WEB3FORMS_ACCESS_KEY;
