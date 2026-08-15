@@ -18,15 +18,14 @@ things are still **placeholders** you need to wire up:
 
 ### 1. Where form submissions go (required — not done yet)
 Right now, submitting the form does **not** send the lead anywhere — it just logs a warning to
-the browser console. You need a destination. The easiest no-backend options:
-- [Web3Forms](https://web3forms.com) (free, just an access key)
-- [Formspree](https://formspree.io)
-- A Zapier "Catch Hook" webhook (sends leads into email, a spreadsheet, or a CRM)
+the browser console. The site is wired up for [Web3Forms](https://web3forms.com) (free, emails
+you the lead directly, no backend or account login needed):
 
-Once you have an endpoint URL, set it as an environment variable when you build/deploy:
-```
-VITE_LEAD_ENDPOINT=https://your-endpoint-here
-```
+1. Go to web3forms.com, enter the email you want leads sent to, click **Create Access Key**
+2. Confirm via the email it sends you
+3. Copy the access key it shows you and either:
+   - Paste it into `DEFAULT_WEB3FORMS_ACCESS_KEY` in `src/lib/leads.ts`, or
+   - Set it as an env var at build time: `VITE_WEB3FORMS_ACCESS_KEY=your-key-here`
 
 ### 2. GA4 is connected — Google Ads is the next step
 GA4 measurement ID `G-7SF9KSH92Z` is already wired into `src/lib/analytics.ts` and live in

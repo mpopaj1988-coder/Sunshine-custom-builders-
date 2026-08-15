@@ -8,29 +8,42 @@ export interface LeadFormData {
   timeframe: string;
 }
 
+// Web3Forms access keys are designed to be used from the browser (like a GA4
+// measurement ID) — see https://web3forms.com. Get one for free at
+// web3forms.com and drop it in here, or override via VITE_WEB3FORMS_ACCESS_KEY.
+const DEFAULT_WEB3FORMS_ACCESS_KEY = "";
+
+const ACCESS_KEY =
+  (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) || DEFAULT_WEB3FORMS_ACCESS_KEY;
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
 /**
- * Submits a lead to VITE_LEAD_ENDPOINT (e.g. a Web3Forms/Formspree access-key
- * URL, a Zapier webhook, or a Supabase edge function). No endpoint is
- * configured out of the box — see README for wiring this up before running
- * paid traffic to this page.
+ * Submits a lead via Web3Forms, which emails it straight to the address the
+ * access key is registered to — no backend required. No-ops (with a console
+ * warning) until an access key is configured. See README for setup.
  */
 export async function submitLead(data: LeadFormData): Promise<{ ok: boolean }> {
-  const endpoint = import.meta.env.VITE_LEAD_ENDPOINT as string | undefined;
-
-  if (!endpoint) {
+  if (!ACCESS_KEY) {
     console.warn(
-      "[leads] VITE_LEAD_ENDPOINT is not set — lead was not sent anywhere. " +
+      "[leads] No Web3Forms access key configured — lead was not sent anywhere. " +
         "See README.md for how to connect a real destination.",
       data,
     );
     return { ok: false };
   }
 
-  const res = await fetch(endpoint, {
+  const res = await fetch(WEB3FORMS_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      access_key: ACCESS_KEY,
+      subject: "New Kitchen Remodeling Lead — Sunshine Custom Builders",
+      from_name: "sunshinecustom.homes",
+      ...data,
+    }),
   });
 
-  return { ok: res.ok };
+  const result = await res.json();
+  return { ok: res.ok && result.success === true };
 }
