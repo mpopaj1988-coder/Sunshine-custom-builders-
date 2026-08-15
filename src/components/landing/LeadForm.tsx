@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitLead, type LeadFormData } from "@/lib/leads";
 import { track } from "@/lib/analytics";
+import { business } from "@/lib/business";
 
 const budgetOptions = ["$10,000–$25,000", "$25,000–$50,000", "$50,000–$100,000", "$100,000+"];
 const timeframeOptions = [
@@ -17,7 +18,7 @@ const inputClass =
 const labelClass = "mb-1.5 block text-sm font-medium text-navy";
 
 export function LeadForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const {
     register,
     handleSubmit,
@@ -26,9 +27,16 @@ export function LeadForm() {
 
   const onSubmit = async (data: LeadFormData) => {
     setStatus("submitting");
-    track("form_submit", { form: "kitchen_remodeling_estimate" });
-    await submitLead(data);
-    setStatus("success");
+    const { ok } = await submitLead(data);
+
+    // Only count the conversion once the lead has actually been delivered —
+    // otherwise Google Ads optimizes toward submissions that never arrived.
+    if (ok) {
+      track("form_submit", { form: "kitchen_remodeling_estimate" });
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -136,12 +144,30 @@ export function LeadForm() {
         </div>
       </div>
 
+      {status === "error" && (
+        <div role="alert" className="border border-red-300 bg-red-50 p-4 text-sm text-red-800">
+          We couldn't send your request just now. Please try again — or call us directly at{" "}
+          <a
+            href={business.landingPhoneHref}
+            onClick={() => track("phone_click", { surface: "form_error" })}
+            className="font-semibold underline"
+          >
+            {business.landingPhone}
+          </a>
+          .
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={status === "submitting"}
         className="w-full rounded-sm bg-gold px-6 py-3.5 text-sm font-semibold uppercase tracking-wide text-navy-dark transition-colors hover:bg-gold-dark disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending..." : "Request a Free Estimate"}
+        {status === "submitting"
+          ? "Sending..."
+          : status === "error"
+            ? "Try Again"
+            : "Request a Free Estimate"}
       </button>
 
       <p className="text-center text-xs text-navy/50">

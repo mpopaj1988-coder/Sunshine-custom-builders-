@@ -18,10 +18,17 @@ const ACCESS_KEY =
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
+/** How long to wait before giving up, so a stalled network can't hang the form. */
+const SUBMIT_TIMEOUT_MS = 15_000;
+
 /**
  * Submits a lead via Web3Forms, which emails it straight to the address the
  * access key is registered to — no backend required. No-ops (with a console
  * warning) until an access key is configured. See README for setup.
+ *
+ * Never throws: a dropped connection, a timeout, or an error response all
+ * resolve to `{ ok: false }` so the caller can show the visitor a way to
+ * recover instead of losing the lead silently.
  */
 export async function submitLead(data: LeadFormData): Promise<{ ok: boolean }> {
   if (!ACCESS_KEY) {
@@ -33,17 +40,23 @@ export async function submitLead(data: LeadFormData): Promise<{ ok: boolean }> {
     return { ok: false };
   }
 
-  const res = await fetch(WEB3FORMS_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      access_key: ACCESS_KEY,
-      subject: "New Kitchen Remodeling Lead — Sunshine Custom Builders",
-      from_name: "sunshinecustom.homes",
-      ...data,
-    }),
-  });
+  try {
+    const res = await fetch(WEB3FORMS_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: ACCESS_KEY,
+        subject: "New Kitchen Remodeling Lead — Sunshine Custom Builders",
+        from_name: "sunshinecustom.homes",
+        ...data,
+      }),
+      signal: AbortSignal.timeout(SUBMIT_TIMEOUT_MS),
+    });
 
-  const result = await res.json();
-  return { ok: res.ok && result.success === true };
+    const result = await res.json().catch(() => null);
+    return { ok: res.ok && result?.success === true };
+  } catch (error) {
+    console.error("[leads] Lead submission failed:", error);
+    return { ok: false };
+  }
 }
