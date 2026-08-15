@@ -33,17 +33,22 @@ export async function submitLead(data: LeadFormData): Promise<{ ok: boolean }> {
     return { ok: false };
   }
 
-  const res = await fetch(WEB3FORMS_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      access_key: ACCESS_KEY,
-      subject: "New Kitchen Remodeling Lead — Sunshine Custom Builders",
-      from_name: "sunshinecustom.homes",
-      ...data,
-    }),
-  });
+  try {
+    const res = await fetch(WEB3FORMS_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: ACCESS_KEY,
+        subject: "New Kitchen Remodeling Lead — Sunshine Custom Builders",
+        from_name: "sunshinecustom.homes",
+        ...data,
+      }),
+    });
 
-  const result = await res.json();
-  return { ok: res.ok && result.success === true };
+    const result = await res.json();
+    return { ok: res.ok && result.success === true };
+  } catch (error) {
+    console.error("[leads] Failed to submit lead to Web3Forms:", error);
+    return { ok: false };
+  }
 }

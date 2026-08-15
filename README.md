@@ -33,7 +33,7 @@ every build, so page views and these events are already being recorded in your G
 
 | Event | Fires when |
 |---|---|
-| `phone_click` | Someone taps/clicks a "Call 248-766-2957" link (header, hero, footer, mobile bar, final CTA) |
+| `phone_click` | Someone taps/clicks a "Call 727-460-6100" link (header, hero, footer, mobile bar, final CTA) |
 | `estimate_cta_click` | Someone clicks a "Request a Free Estimate" button |
 | `form_submit` | The lead form is successfully submitted |
 

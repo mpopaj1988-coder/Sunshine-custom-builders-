@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitLead, type LeadFormData } from "@/lib/leads";
 import { track } from "@/lib/analytics";
+import { business } from "@/lib/business";
 
 const budgetOptions = ["$10,000–$25,000", "$25,000–$50,000", "$50,000–$100,000", "$100,000+"];
 const timeframeOptions = [
@@ -17,7 +18,7 @@ const inputClass =
 const labelClass = "mb-1.5 block text-sm font-medium text-navy";
 
 export function LeadForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const {
     register,
     handleSubmit,
@@ -26,9 +27,13 @@ export function LeadForm() {
 
   const onSubmit = async (data: LeadFormData) => {
     setStatus("submitting");
-    track("form_submit", { form: "kitchen_remodeling_estimate" });
-    await submitLead(data);
-    setStatus("success");
+    const result = await submitLead(data);
+    if (result.ok) {
+      track("form_submit", { form: "kitchen_remodeling_estimate" });
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -135,6 +140,16 @@ export function LeadForm() {
           {errors.timeframe && <p className="mt-1 text-xs text-red-600">Please select a timeframe.</p>}
         </div>
       </div>
+
+      {status === "error" && (
+        <p className="border border-red-200 bg-red-50 px-4 py-3 text-center text-sm text-red-700">
+          Something went wrong sending your request. Please try again, or call us directly at{" "}
+          <a href={business.landingPhoneHref} className="font-semibold underline">
+            {business.landingPhone}
+          </a>
+          .
+        </p>
+      )}
 
       <button
         type="submit"
