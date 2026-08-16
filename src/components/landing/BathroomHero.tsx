@@ -11,15 +11,15 @@ export function BathroomHero() {
       <div className="mx-auto grid max-w-content gap-10 px-6 py-14 md:grid-cols-2 md:items-center md:py-24">
         <div>
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-gold-light">
-            Tampa Bay Bathroom Remodeling
+            Pinellas County Bathroom Remodeling
           </p>
           <h1 className="font-display text-4xl leading-tight md:text-5xl lg:text-[3.25rem]">
-            Custom Bathroom Renovations Built by a Licensed Florida Contractor
+            Bathroom Remodeling in Pinellas County
           </h1>
           <p className="mt-5 max-w-xl text-base text-white/75 md:text-lg">
-            Sunshine Custom Builders plans and manages complete bathroom transformations for
-            homeowners across Pinellas County &mdash; from custom vanities to full walk-in shower
-            conversions, handled by one licensed team from start to finish.
+            Sunshine Custom Builders is a licensed Florida contractor providing complete bathroom
+            renovations for homeowners across Pinellas County &mdash; from custom vanities to full
+            walk-in shower conversions, handled by one team from start to finish.
           </p>
 
           <div className="mt-6 inline-flex items-center gap-2 rounded-sm border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-medium text-gold-light">

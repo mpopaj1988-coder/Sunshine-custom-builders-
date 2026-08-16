@@ -15,6 +15,18 @@ const faqs = [
     answer: "Yes. Tub-to-shower conversions and walk-in shower installations are among our most requested bathroom projects.",
   },
   {
+    question: "Do you handle the entire bathroom renovation?",
+    answer: "Yes. Sunshine Custom Builders acts as your general contractor and project manager, coordinating every phase of the renovation and the licensed trades involved — not just one piece of the job.",
+  },
+  {
+    question: "Do you provide free estimates?",
+    answer: "Yes. Consultations are free and no-pressure. Request one through the form on this page or by calling us directly.",
+  },
+  {
+    question: "Do you remodel master bathrooms?",
+    answer: "Yes. Master bathroom remodels are one of our most common projects, from full renovations to walk-in shower conversions.",
+  },
+  {
     question: "Do you handle permits?",
     answer: "As your licensed general contractor, we manage the permitting process required for your project as part of our project management.",
   },

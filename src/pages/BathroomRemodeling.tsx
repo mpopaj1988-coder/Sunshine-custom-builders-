@@ -9,7 +9,7 @@ import { BathroomServices } from "@/components/landing/BathroomServices";
 import { BathroomFeaturedProject } from "@/components/landing/BathroomFeaturedProject";
 import { WhySunshine } from "@/components/landing/WhySunshine";
 import { WhoThisIsFor } from "@/components/landing/WhoThisIsFor";
-import { Process } from "@/components/landing/Process";
+import { Process, type ProcessStep } from "@/components/landing/Process";
 import { ServiceArea } from "@/components/landing/ServiceArea";
 import { BathroomFAQ } from "@/components/landing/BathroomFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
@@ -40,6 +40,16 @@ const jsonLd = {
   },
 };
 
+const processSteps: ProcessStep[] = [
+  { number: "01", title: "Request a Consultation", description: "Reach out through the form or by phone to get started." },
+  { number: "02", title: "Discuss Your Project", description: "We talk through your goals, your space, and your budget range." },
+  { number: "03", title: "Develop the Scope", description: "We define the layout, materials, and full scope of work." },
+  { number: "04", title: "Receive Your Estimate", description: "You get a clear picture of cost before anything begins." },
+  { number: "05", title: "Schedule the Project", description: "We plan the timeline and coordinate the trades involved." },
+  { number: "06", title: "Complete the Renovation", description: "Our team manages the work while keeping you informed at each phase." },
+  { number: "07", title: "Final Walkthrough", description: "We walk the finished bathroom with you to confirm everything meets expectations." },
+];
+
 export default function BathroomRemodeling() {
   return (
     <>
@@ -63,13 +73,14 @@ export default function BathroomRemodeling() {
         <BathroomFeaturedProject />
         <WhySunshine noun="bathroom" />
         <WhoThisIsFor noun="bathroom" />
-        <Process noun="bathroom" headingNoun="Bathroom" />
+        <Process noun="bathroom" headingNoun="Bathroom" steps={processSteps} />
         <ServiceArea noun="bathroom" />
         <BathroomFAQ />
         <FinalCTA
           heading="Ready to Remodel Your Bathroom?"
           formSource="bathroom_remodeling_estimate"
           projectPlaceholder="e.g. Walk-in shower, tub conversion, full bathroom renovation"
+          submitLabel="Request Your Free Bathroom Remodeling Estimate"
         />
       </main>
 

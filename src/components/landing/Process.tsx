@@ -1,8 +1,15 @@
 import { Section, Eyebrow } from "@/components/ui/Section";
 
+export interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
 interface ProcessProps {
   noun: string;
   headingNoun: string;
+  steps?: ProcessStep[];
 }
 
 const buildSteps = (noun: string) => [
@@ -28,8 +35,8 @@ const buildSteps = (noun: string) => [
   },
 ];
 
-export function Process({ noun, headingNoun }: ProcessProps) {
-  const steps = buildSteps(noun);
+export function Process({ noun, headingNoun, steps }: ProcessProps) {
+  const resolvedSteps = steps ?? buildSteps(noun);
   return (
     <Section tone="white">
       <div className="max-w-2xl">
@@ -37,7 +44,7 @@ export function Process({ noun, headingNoun }: ProcessProps) {
         <h2 className="text-3xl md:text-4xl">A Straightforward Path to Your New {headingNoun}</h2>
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step) => (
+        {resolvedSteps.map((step) => (
           <div key={step.number}>
             <p className="font-display text-3xl text-gold-dark">{step.number}</p>
             <h3 className="mt-2 text-lg font-semibold text-navy">{step.title}</h3>

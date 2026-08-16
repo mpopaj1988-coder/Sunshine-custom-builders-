@@ -6,6 +6,10 @@ const services = [
     description: "Full, ground-up bathroom transformations managed from design through final walkthrough.",
   },
   {
+    title: "Master Bathroom Remodeling",
+    description: "Full master bath renovations, from layout changes to finish selections.",
+  },
+  {
     title: "Custom Vanities",
     description: "Vanities designed and specified around how you actually use your bathroom.",
   },

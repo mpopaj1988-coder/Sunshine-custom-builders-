@@ -6,9 +6,10 @@ interface FinalCTAProps {
   heading: string;
   formSource: string;
   projectPlaceholder: string;
+  submitLabel?: string;
 }
 
-export function FinalCTA({ heading, formSource, projectPlaceholder }: FinalCTAProps) {
+export function FinalCTA({ heading, formSource, projectPlaceholder, submitLabel }: FinalCTAProps) {
   return (
     <section id="estimate-form" className="bg-navy text-white">
       <div className="mx-auto grid max-w-content gap-10 px-6 py-16 md:grid-cols-2 md:items-start md:py-24">
@@ -38,7 +39,11 @@ export function FinalCTA({ heading, formSource, projectPlaceholder }: FinalCTAPr
         </div>
 
         <div id="estimate-form-fields">
-          <LeadForm formSource={formSource} projectPlaceholder={projectPlaceholder} />
+          <LeadForm
+            formSource={formSource}
+            projectPlaceholder={projectPlaceholder}
+            submitLabel={submitLabel}
+          />
         </div>
       </div>
     </section>

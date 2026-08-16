@@ -20,9 +20,14 @@ const labelClass = "mb-1.5 block text-sm font-medium text-navy";
 interface LeadFormProps {
   formSource: string;
   projectPlaceholder: string;
+  submitLabel?: string;
 }
 
-export function LeadForm({ formSource, projectPlaceholder }: LeadFormProps) {
+export function LeadForm({
+  formSource,
+  projectPlaceholder,
+  submitLabel = "Request a Free Estimate",
+}: LeadFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const {
     register,
@@ -168,11 +173,7 @@ export function LeadForm({ formSource, projectPlaceholder }: LeadFormProps) {
         disabled={status === "submitting"}
         className="w-full rounded-sm bg-gold px-6 py-3.5 text-sm font-semibold uppercase tracking-wide text-navy-dark transition-colors hover:bg-gold-dark disabled:opacity-60"
       >
-        {status === "submitting"
-          ? "Sending..."
-          : status === "error"
-            ? "Try Again"
-            : "Request a Free Estimate"}
+        {status === "submitting" ? "Sending..." : status === "error" ? "Try Again" : submitLabel}
       </button>
 
       <p className="text-center text-xs text-navy/50">
