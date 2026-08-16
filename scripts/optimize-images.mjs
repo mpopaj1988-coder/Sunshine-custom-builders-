@@ -4,8 +4,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SRC_DIR = path.join(__dirname, "../src/assets/kitchen/source");
-const OUT_DIR = path.join(__dirname, "../src/assets/kitchen");
+const gallery = process.argv[2] || "kitchen";
+const SRC_DIR = path.join(__dirname, `../src/assets/${gallery}/source`);
+const OUT_DIR = path.join(__dirname, `../src/assets/${gallery}`);
 
 const SIZES = [
   { suffix: "1600", width: 1600 },

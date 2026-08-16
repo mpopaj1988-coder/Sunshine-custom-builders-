@@ -1,7 +1,14 @@
-import type { KitchenImage } from "@/assets/kitchen/images";
+export interface GalleryImage {
+  id: string;
+  alt: string;
+  jpg1600: string;
+  webp1600: string;
+  jpg800: string;
+  webp800: string;
+}
 
 interface ResponsiveImageProps {
-  image: KitchenImage;
+  image: GalleryImage;
   className?: string;
   loading?: "eager" | "lazy";
   fetchPriority?: "high" | "low" | "auto";

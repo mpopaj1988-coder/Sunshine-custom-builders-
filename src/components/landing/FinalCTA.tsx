@@ -2,12 +2,18 @@ import { business } from "@/lib/business";
 import { track } from "@/lib/analytics";
 import { LeadForm } from "@/components/landing/LeadForm";
 
-export function FinalCTA() {
+interface FinalCTAProps {
+  heading: string;
+  formSource: string;
+  projectPlaceholder: string;
+}
+
+export function FinalCTA({ heading, formSource, projectPlaceholder }: FinalCTAProps) {
   return (
     <section id="estimate-form" className="bg-navy text-white">
       <div className="mx-auto grid max-w-content gap-10 px-6 py-16 md:grid-cols-2 md:items-start md:py-24">
         <div>
-          <h2 className="text-3xl text-white md:text-4xl">Ready to Remodel Your Kitchen?</h2>
+          <h2 className="text-3xl text-white md:text-4xl">{heading}</h2>
           <p className="mt-4 max-w-md text-white/75">
             Request a free, no-pressure consultation with Sunshine Custom Builders. Tell us about
             your project and we'll follow up to talk through scope, timeline, and next steps.
@@ -32,7 +38,7 @@ export function FinalCTA() {
         </div>
 
         <div id="estimate-form-fields">
-          <LeadForm />
+          <LeadForm formSource={formSource} projectPlaceholder={projectPlaceholder} />
         </div>
       </div>
     </section>

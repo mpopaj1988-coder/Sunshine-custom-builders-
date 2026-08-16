@@ -17,7 +17,12 @@ const inputClass =
   "w-full rounded-sm border border-navy/20 bg-white px-4 py-3 text-sm text-navy placeholder:text-navy/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold";
 const labelClass = "mb-1.5 block text-sm font-medium text-navy";
 
-export function LeadForm() {
+interface LeadFormProps {
+  formSource: string;
+  projectPlaceholder: string;
+}
+
+export function LeadForm({ formSource, projectPlaceholder }: LeadFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const {
     register,
@@ -32,7 +37,7 @@ export function LeadForm() {
     // Only count the conversion once the lead has actually been delivered —
     // otherwise Google Ads optimizes toward submissions that never arrived.
     if (ok) {
-      track("form_submit", { form: "kitchen_remodeling_estimate" });
+      track("form_submit", { form: formSource });
       setStatus("success");
     } else {
       setStatus("error");
@@ -107,7 +112,7 @@ export function LeadForm() {
         <input
           id="project"
           className={inputClass}
-          placeholder="e.g. Full kitchen renovation, cabinets, countertops"
+          placeholder={projectPlaceholder}
           {...register("project", { required: true })}
         />
         {errors.project && <p className="mt-1 text-xs text-red-600">Please tell us a bit about your project.</p>}

@@ -3,44 +3,44 @@ import { business } from "@/lib/business";
 import { LandingHeader } from "@/components/layout/LandingHeader";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/landing/Hero";
+import { BathroomHero } from "@/components/landing/BathroomHero";
 import { TrustBar } from "@/components/landing/TrustBar";
-import { Services } from "@/components/landing/Services";
-import { FeaturedProject } from "@/components/landing/FeaturedProject";
+import { BathroomServices } from "@/components/landing/BathroomServices";
+import { BathroomFeaturedProject } from "@/components/landing/BathroomFeaturedProject";
 import { WhySunshine } from "@/components/landing/WhySunshine";
 import { WhoThisIsFor } from "@/components/landing/WhoThisIsFor";
 import { Process } from "@/components/landing/Process";
 import { ServiceArea } from "@/components/landing/ServiceArea";
-import { FAQ } from "@/components/landing/FAQ";
+import { BathroomFAQ } from "@/components/landing/BathroomFAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 
-const canonicalUrl = `${business.siteUrl}${business.landingPath}`;
+const canonicalUrl = `${business.siteUrl}/bathroom-remodeling`;
 
-const title = "Kitchen Remodeling Tampa Bay | Licensed Contractor | Sunshine Custom Builders";
+const title = "Bathroom Remodeling Pinellas County | Licensed Contractor | Sunshine Custom Builders";
 const description =
-  "Custom kitchen renovations in Tampa Bay by a licensed Florida contractor. Complete kitchen transformations, custom cabinetry & countertops. Projects from $10,000. Free consultation.";
+  "Custom bathroom renovations in Pinellas County by a licensed Florida contractor. Walk-in showers, tub-to-shower conversions, custom vanities. Projects from $10,000. Free consultation.";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
   name: business.name,
-  description: `Licensed Florida general contractor specializing in custom kitchen remodeling and renovations, serving ${business.serviceAreaDetail}.`,
+  description: `Licensed Florida general contractor specializing in custom bathroom remodeling and renovations, serving ${business.serviceAreaDetail}.`,
   areaServed: business.serviceArea,
   telephone: business.landingPhone,
   url: canonicalUrl,
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Kitchen Remodeling Services",
+    name: "Bathroom Remodeling Services",
     itemListElement: [
-      "Complete kitchen renovations",
-      "Custom cabinetry",
-      "Countertops and islands",
-      "Kitchen layout redesign",
+      "Complete bathroom renovations",
+      "Custom vanities",
+      "Walk-in showers and tub-to-shower conversions",
+      "Bathroom layout redesign",
     ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
   },
 };
 
-export default function KitchenRemodeling() {
+export default function BathroomRemodeling() {
   return (
     <>
       <Helmet>
@@ -57,19 +57,19 @@ export default function KitchenRemodeling() {
       <LandingHeader />
 
       <main className="pb-16 md:pb-0">
-        <Hero />
+        <BathroomHero />
         <TrustBar />
-        <Services />
-        <FeaturedProject />
-        <WhySunshine noun="kitchen" />
-        <WhoThisIsFor noun="kitchen" />
-        <Process noun="kitchen" headingNoun="Kitchen" />
-        <ServiceArea noun="kitchen" />
-        <FAQ />
+        <BathroomServices />
+        <BathroomFeaturedProject />
+        <WhySunshine noun="bathroom" />
+        <WhoThisIsFor noun="bathroom" />
+        <Process noun="bathroom" headingNoun="Bathroom" />
+        <ServiceArea noun="bathroom" />
+        <BathroomFAQ />
         <FinalCTA
-          heading="Ready to Remodel Your Kitchen?"
-          formSource="kitchen_remodeling_estimate"
-          projectPlaceholder="e.g. Full kitchen renovation, cabinets, countertops"
+          heading="Ready to Remodel Your Bathroom?"
+          formSource="bathroom_remodeling_estimate"
+          projectPlaceholder="e.g. Walk-in shower, tub conversion, full bathroom renovation"
         />
       </main>
 

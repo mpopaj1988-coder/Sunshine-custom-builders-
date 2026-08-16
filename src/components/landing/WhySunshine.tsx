@@ -1,13 +1,17 @@
 import { Section, Eyebrow } from "@/components/ui/Section";
 
-const points = [
+interface WhySunshineProps {
+  noun: string;
+}
+
+const buildPoints = (noun: string) => [
   {
     title: "Licensed Florida Contractor",
     description: "Work is performed under Florida Contractor License CRC1335865.",
   },
   {
     title: "A Custom Approach",
-    description: "Every kitchen is scoped and designed around your home and how you use it — not a fixed package.",
+    description: `Every ${noun} is scoped and designed around your home and how you use it — not a fixed package.`,
   },
   {
     title: "High-Quality Finishes",
@@ -27,7 +31,8 @@ const points = [
   },
 ];
 
-export function WhySunshine() {
+export function WhySunshine({ noun }: WhySunshineProps) {
+  const points = buildPoints(noun);
   return (
     <Section tone="sand">
       <div className="max-w-2xl">

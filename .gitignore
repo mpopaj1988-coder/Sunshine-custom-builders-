@@ -9,6 +9,6 @@ vite.config.d.ts
 
 # Full-resolution source photos are kept locally only; committed assets are
 # the optimized outputs from `npm run optimize-images`.
-src/assets/kitchen/source/
+src/assets/*/source/
 
 .DS_Store

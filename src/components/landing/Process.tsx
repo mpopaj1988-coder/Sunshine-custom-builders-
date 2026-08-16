@@ -1,6 +1,11 @@
 import { Section, Eyebrow } from "@/components/ui/Section";
 
-const steps = [
+interface ProcessProps {
+  noun: string;
+  headingNoun: string;
+}
+
+const buildSteps = (noun: string) => [
   {
     number: "01",
     title: "Consultation",
@@ -19,16 +24,17 @@ const steps = [
   {
     number: "04",
     title: "Final Walkthrough",
-    description: "We walk the finished kitchen with you to confirm everything meets expectations.",
+    description: `We walk the finished ${noun} with you to confirm everything meets expectations.`,
   },
 ];
 
-export function Process() {
+export function Process({ noun, headingNoun }: ProcessProps) {
+  const steps = buildSteps(noun);
   return (
     <Section tone="white">
       <div className="max-w-2xl">
         <Eyebrow>Our Process</Eyebrow>
-        <h2 className="text-3xl md:text-4xl">A Straightforward Path to Your New Kitchen</h2>
+        <h2 className="text-3xl md:text-4xl">A Straightforward Path to Your New {headingNoun}</h2>
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step) => (

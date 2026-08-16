@@ -6,17 +6,9 @@ import k2_1600 from "./kitchen-02-1600.jpg";
 import k2_1600w from "./kitchen-02-1600.webp";
 import k2_800 from "./kitchen-02-800.jpg";
 import k2_800w from "./kitchen-02-800.webp";
+import type { GalleryImage } from "@/components/ui/ResponsiveImage";
 
-export interface KitchenImage {
-  id: string;
-  alt: string;
-  jpg1600: string;
-  webp1600: string;
-  jpg800: string;
-  webp800: string;
-}
-
-export const kitchenImages: KitchenImage[] = [
+export const kitchenImages: GalleryImage[] = [
   {
     id: "kitchen-01",
     alt: "Modern Tampa Bay kitchen remodel with white waterfall quartz island, fluted wood cabinetry, black pendant lighting, and wide-plank wood flooring",
