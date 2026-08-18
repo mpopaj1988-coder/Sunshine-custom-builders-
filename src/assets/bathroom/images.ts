@@ -22,10 +22,6 @@ import b9_1600 from "./bathroom-09-1600.jpg";
 import b9_1600w from "./bathroom-09-1600.webp";
 import b9_800 from "./bathroom-09-800.jpg";
 import b9_800w from "./bathroom-09-800.webp";
-import b10_1600 from "./bathroom-10-1600.jpg";
-import b10_1600w from "./bathroom-10-1600.webp";
-import b10_800 from "./bathroom-10-800.jpg";
-import b10_800w from "./bathroom-10-800.webp";
 import b11_1600 from "./bathroom-11-1600.jpg";
 import b11_1600w from "./bathroom-11-1600.webp";
 import b11_800 from "./bathroom-11-800.jpg";
@@ -38,6 +34,10 @@ import b13_1600 from "./bathroom-13-1600.jpg";
 import b13_1600w from "./bathroom-13-1600.webp";
 import b13_800 from "./bathroom-13-800.jpg";
 import b13_800w from "./bathroom-13-800.webp";
+import b14_1600 from "./bathroom-14-1600.jpg";
+import b14_1600w from "./bathroom-14-1600.webp";
+import b14_800 from "./bathroom-14-800.jpg";
+import b14_800w from "./bathroom-14-800.webp";
 import type { GalleryImage } from "@/components/ui/ResponsiveImage";
 
 export const bathroomImages: GalleryImage[] = [
@@ -90,14 +90,6 @@ export const bathroomImages: GalleryImage[] = [
     webp800: b9_800w,
   },
   {
-    id: "bathroom-10",
-    alt: "Bathroom under construction with exposed moisture-resistant cement board on the shower walls, a mortar shower pan, and a stepladder and caulk gun on the floor",
-    jpg1600: b10_1600,
-    webp1600: b10_1600w,
-    jpg800: b10_800,
-    webp800: b10_800w,
-  },
-  {
     id: "bathroom-11",
     alt: "Finished walk-in shower with book-matched black marble slab walls, a ribbed accent wall, a frameless glass door, and a marble-tiled floor lit by a window",
     jpg1600: b11_1600,
@@ -120,5 +112,13 @@ export const bathroomImages: GalleryImage[] = [
     webp1600: b13_1600w,
     jpg800: b13_800,
     webp800: b13_800w,
+  },
+  {
+    id: "bathroom-14",
+    alt: "Before and after comparison of a bathroom shower remodel: exposed cement board and a bare mortar shower pan on the left, transformed into a finished white vertical-tile shower with a built-in niche, pebble-tile floor, and recessed lighting on the right",
+    jpg1600: b14_1600,
+    webp1600: b14_1600w,
+    jpg800: b14_800,
+    webp800: b14_800w,
   },
 ];

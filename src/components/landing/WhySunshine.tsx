@@ -8,6 +8,7 @@ export interface WhyPoint {
 interface WhySunshineProps {
   noun: string;
   points?: WhyPoint[];
+  heading?: string;
 }
 
 const buildPoints = (noun: string) => [
@@ -37,13 +38,13 @@ const buildPoints = (noun: string) => [
   },
 ];
 
-export function WhySunshine({ noun, points: pointsOverride }: WhySunshineProps) {
+export function WhySunshine({ noun, points: pointsOverride, heading }: WhySunshineProps) {
   const points = pointsOverride ?? buildPoints(noun);
   return (
     <Section tone="sand">
       <div className="max-w-2xl">
         <Eyebrow>Why Sunshine Custom Builders</Eyebrow>
-        <h2 className="text-3xl md:text-4xl">A Licensed Contractor, Not a Handyman Crew</h2>
+        <h2 className="text-3xl md:text-4xl">{heading ?? "A Licensed Contractor, Not a Handyman Crew"}</h2>
       </div>
       <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
         {points.map((point) => (

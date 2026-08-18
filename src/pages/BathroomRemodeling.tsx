@@ -6,7 +6,6 @@ import { BathroomStickyCTA } from "@/components/landing/BathroomStickyCTA";
 import { BathroomHero } from "@/components/landing/BathroomHero";
 import { TrustBar, type TrustBarItem } from "@/components/landing/TrustBar";
 import { BathroomServices } from "@/components/landing/BathroomServices";
-import { BathroomFeaturedProject } from "@/components/landing/BathroomFeaturedProject";
 import { BathroomOurWork } from "@/components/landing/BathroomOurWork";
 import { BathroomQualifier } from "@/components/landing/BathroomQualifier";
 import { WhySunshine, type WhyPoint } from "@/components/landing/WhySunshine";
@@ -132,12 +131,15 @@ export default function BathroomRemodeling() {
         <BathroomHero />
         <TrustBar items={trustBarItems} />
         <BathroomServices />
-        <WhySunshine noun="bathroom" points={whyPoints} />
-        <BathroomFeaturedProject />
+        <WhySunshine
+          noun="bathroom"
+          points={whyPoints}
+          heading="A Licensed Contractor Focused on Complete Renovations"
+        />
         <BathroomOurWork />
         <WhoThisIsFor
           noun="bathroom"
-          body="Built for homeowners planning a complete bathroom renovation — not small handyman repairs."
+          body="Built for homeowners planning a complete bathroom renovation — full layout changes, custom vanities, showers, and finishes, start to finish."
         />
         <Process noun="bathroom" headingNoun="Bathroom" steps={processSteps} />
         <BathroomQualifier />
