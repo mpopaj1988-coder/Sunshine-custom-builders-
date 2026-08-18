@@ -4,11 +4,11 @@ import { Section, Eyebrow } from "@/components/ui/Section";
 const faqs = [
   {
     question: "How much does a bathroom remodel cost?",
-    answer: `Cost depends entirely on the scope of your project — layout changes, vanities, showers, and finishes all affect the total. Sunshine Custom Builders takes on bathroom projects starting at ${business.minProjectLabel}. A consultation is the best way to get an accurate range for your specific bathroom.`,
+    answer: `Cost depends on your project's scope — layout, vanities, showers, and finishes. Projects start at ${business.minProjectLabel}; a free consultation gets you an accurate range.`,
   },
   {
     question: "What is the minimum project size?",
-    answer: `We take on bathroom renovations starting at ${business.minProjectLabel}. This lets us focus on complete renovations and larger remodeling projects rather than small repairs.`,
+    answer: `We take on bathroom renovations starting at ${business.minProjectLabel} — complete renovations, not small repairs.`,
   },
   {
     question: "Do you handle tub-to-shower conversions?",
@@ -16,11 +16,11 @@ const faqs = [
   },
   {
     question: "Do you handle the entire bathroom renovation?",
-    answer: "Yes. Sunshine Custom Builders acts as your general contractor and project manager, coordinating every phase of the renovation and the licensed trades involved — not just one piece of the job.",
+    answer: "Yes. We act as your general contractor, managing every phase and every licensed trade involved.",
   },
   {
     question: "Do you provide free estimates?",
-    answer: "Yes. Consultations are free and no-pressure. Request one through the form on this page or by calling us directly.",
+    answer: `Yes. Consultations are free and no-pressure. Call ${business.bathroomPhone} to request one.`,
   },
   {
     question: "Do you remodel master bathrooms?",
@@ -32,19 +32,19 @@ const faqs = [
   },
   {
     question: "How long does a bathroom remodel take?",
-    answer: "Timelines vary based on the scope of the renovation, material lead times, and permitting. We'll walk you through an estimated timeline for your specific project during the design and scope phase.",
+    answer: "It depends on scope, material lead times, and permitting. We'll give you an estimated timeline during the design and scope phase.",
   },
   {
     question: "Can you help with design and material selections?",
-    answer: "Yes. Design and material selection — vanities, tile, fixtures, and finishes — are part of the design and scope phase of our process.",
+    answer: "Yes. Vanities, tile, fixtures, and finishes are all part of the design and scope phase.",
   },
   {
     question: "What areas do you serve?",
-    answer: `We serve ${business.serviceAreaDetail}.`,
+    answer: `We serve ${business.bathroomServiceAreaDetail}.`,
   },
   {
     question: "How do I request an estimate?",
-    answer: `Fill out the form on this page or call ${business.landingPhone}. Submitting the form requests a consultation and does not guarantee a quote — final pricing is determined after we understand the full scope of your project.`,
+    answer: `Call ${business.bathroomPhone}. Reaching out requests a consultation and does not guarantee a quote — final pricing is determined after we understand the full scope of your project.`,
   },
 ];
 

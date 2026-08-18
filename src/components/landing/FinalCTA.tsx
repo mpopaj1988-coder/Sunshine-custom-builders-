@@ -11,7 +11,7 @@ interface FinalCTAProps {
 
 export function FinalCTA({ heading, formSource, projectPlaceholder, submitLabel }: FinalCTAProps) {
   return (
-    <section id="estimate-form" className="bg-navy text-white">
+    <section id="estimate-form" className="scroll-mt-20 bg-navy text-white">
       <div className="mx-auto grid max-w-content gap-10 px-6 py-16 md:grid-cols-2 md:items-start md:py-24">
         <div>
           <h2 className="text-3xl text-white md:text-4xl">{heading}</h2>
@@ -38,7 +38,7 @@ export function FinalCTA({ heading, formSource, projectPlaceholder, submitLabel 
           </div>
         </div>
 
-        <div id="estimate-form-fields">
+        <div id="estimate-form-fields" className="scroll-mt-20">
           <LeadForm
             formSource={formSource}
             projectPlaceholder={projectPlaceholder}

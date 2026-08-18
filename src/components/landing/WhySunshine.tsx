@@ -1,7 +1,13 @@
 import { Section, Eyebrow } from "@/components/ui/Section";
 
+export interface WhyPoint {
+  title: string;
+  description: string;
+}
+
 interface WhySunshineProps {
   noun: string;
+  points?: WhyPoint[];
 }
 
 const buildPoints = (noun: string) => [
@@ -31,8 +37,8 @@ const buildPoints = (noun: string) => [
   },
 ];
 
-export function WhySunshine({ noun }: WhySunshineProps) {
-  const points = buildPoints(noun);
+export function WhySunshine({ noun, points: pointsOverride }: WhySunshineProps) {
+  const points = pointsOverride ?? buildPoints(noun);
   return (
     <Section tone="sand">
       <div className="max-w-2xl">

@@ -1,7 +1,17 @@
 import { business } from "@/lib/business";
 import { track } from "@/lib/analytics";
 
-export function Footer() {
+interface FooterProps {
+  phone?: string;
+  phoneHref?: string;
+  areaDetail?: string;
+}
+
+export function Footer({
+  phone = business.landingPhone,
+  phoneHref = business.landingPhoneHref,
+  areaDetail = business.serviceAreaDetail,
+}: FooterProps) {
   return (
     <footer className="bg-navy-dark text-white/70">
       <div className="mx-auto max-w-content px-6 py-12">
@@ -11,15 +21,15 @@ export function Footer() {
             <p className="mt-2 text-sm">
               {business.licenseLabel}: {business.license}
             </p>
-            <p className="text-sm">Serving {business.serviceAreaDetail}</p>
+            <p className="text-sm">Serving {areaDetail}</p>
           </div>
           <div className="text-sm">
             <a
-              href={business.landingPhoneHref}
+              href={phoneHref}
               onClick={() => track("phone_click", { surface: "footer" })}
               className="text-gold-light hover:text-gold"
             >
-              {business.landingPhone}
+              {phone}
             </a>
           </div>
         </div>

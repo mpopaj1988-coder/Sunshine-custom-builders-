@@ -19,11 +19,11 @@ const services = [
   },
   {
     title: "Bathroom Layout Redesign",
-    description: "Reworking flow and storage — including reconfiguring the space where structurally possible.",
+    description: "Reworking flow and storage, including reconfiguring the space where possible.",
   },
   {
     title: "Lighting & Electrical Upgrades",
-    description: "Vanity lighting, recessed fixtures, and exhaust upgrades coordinated with licensed trade partners.",
+    description: "Vanity lighting, recessed fixtures, and exhaust upgrades, fully coordinated for you.",
   },
   {
     title: "Flooring",
@@ -46,8 +46,7 @@ export function BathroomServices() {
         <Eyebrow>Our Bathroom Remodeling Services</Eyebrow>
         <h2 className="text-3xl md:text-4xl">Everything Your Bathroom Renovation Needs</h2>
         <p className="mt-4 text-navy/70">
-          Sunshine Custom Builders acts as your general contractor and project manager,
-          coordinating every phase of your bathroom renovation and the licensed trades involved.
+          One contractor, every phase — design through the final walkthrough.
         </p>
       </div>
 
