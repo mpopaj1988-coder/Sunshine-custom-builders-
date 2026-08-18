@@ -17,13 +17,13 @@ const featuredId = "bathroom-12";
 const gridOrder = ["bathroom-09", "bathroom-08", "bathroom-03"];
 const classicBeforeId = "bathroom-10";
 const classicAfterId = "bathroom-11";
-const beforeAfterId = "bathroom-14";
+const collageBeforeAfterId = "bathroom-14";
 
 const featured = bathroomImages.find((image) => image.id === featuredId)!;
 const gridImages = gridOrder.map((id) => bathroomImages.find((image) => image.id === id)!);
 const classicBefore = bathroomImages.find((image) => image.id === classicBeforeId)!;
 const classicAfter = bathroomImages.find((image) => image.id === classicAfterId)!;
-const beforeAfter = bathroomImages.find((image) => image.id === beforeAfterId)!;
+const collageBeforeAfter = bathroomImages.find((image) => image.id === collageBeforeAfterId)!;
 
 function Caption({ id }: { id: string }) {
   return (
@@ -44,32 +44,7 @@ export function BathroomOurWork() {
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6">
-        <div className="relative">
-          <ResponsiveImage
-            image={classicBefore}
-            sizes="(min-width: 768px) 50vw, 50vw"
-            className="aspect-[4/3] w-full rounded-sm object-cover"
-            loading="eager"
-          />
-          <span className="absolute left-3 top-3 rounded-sm bg-navy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-            Before
-          </span>
-        </div>
-        <div className="relative">
-          <ResponsiveImage
-            image={classicAfter}
-            sizes="(min-width: 768px) 50vw, 50vw"
-            className="aspect-[4/3] w-full rounded-sm object-cover"
-            loading="eager"
-          />
-          <span className="absolute left-3 top-3 rounded-sm bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy-dark">
-            After
-          </span>
-        </div>
-      </div>
-
-      <div className="relative mt-14">
+      <div className="relative mt-10">
         <ResponsiveImage
           image={featured}
           sizes="100vw"
@@ -97,12 +72,39 @@ export function BathroomOurWork() {
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
           See the Transformation
         </p>
-        <ResponsiveImage
-          image={beforeAfter}
-          sizes="(min-width: 768px) 576px, 100vw"
-          className="mx-auto mt-4 block w-full max-w-xl rounded-sm"
-          loading="eager"
-        />
+        <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative">
+              <ResponsiveImage
+                image={classicBefore}
+                sizes="(min-width: 1024px) 25vw, 50vw"
+                className="aspect-[3/4] w-full rounded-sm object-cover"
+                loading="eager"
+              />
+              <span className="absolute left-3 top-3 rounded-sm bg-navy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                Before
+              </span>
+            </div>
+            <div className="relative">
+              <ResponsiveImage
+                image={classicAfter}
+                sizes="(min-width: 1024px) 25vw, 50vw"
+                className="aspect-[3/4] w-full rounded-sm object-cover"
+                loading="eager"
+              />
+              <span className="absolute left-3 top-3 rounded-sm bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy-dark">
+                After
+              </span>
+            </div>
+          </div>
+
+          <ResponsiveImage
+            image={collageBeforeAfter}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="mx-auto block w-full max-w-xl rounded-sm lg:max-w-none"
+            loading="eager"
+          />
+        </div>
       </div>
     </Section>
   );
