@@ -22,6 +22,10 @@ import b9_1600 from "./bathroom-09-1600.jpg";
 import b9_1600w from "./bathroom-09-1600.webp";
 import b9_800 from "./bathroom-09-800.jpg";
 import b9_800w from "./bathroom-09-800.webp";
+import b10_1600 from "./bathroom-10-1600.jpg";
+import b10_1600w from "./bathroom-10-1600.webp";
+import b10_800 from "./bathroom-10-800.jpg";
+import b10_800w from "./bathroom-10-800.webp";
 import b11_1600 from "./bathroom-11-1600.jpg";
 import b11_1600w from "./bathroom-11-1600.webp";
 import b11_800 from "./bathroom-11-800.jpg";
@@ -88,6 +92,14 @@ export const bathroomImages: GalleryImage[] = [
     webp1600: b9_1600w,
     jpg800: b9_800,
     webp800: b9_800w,
+  },
+  {
+    id: "bathroom-10",
+    alt: "Bathroom under construction with exposed moisture-resistant cement board on the shower walls, a mortar shower pan, and a stepladder and caulk gun on the floor",
+    jpg1600: b10_1600,
+    webp1600: b10_1600w,
+    jpg800: b10_800,
+    webp800: b10_800w,
   },
   {
     id: "bathroom-11",

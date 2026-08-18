@@ -5,19 +5,24 @@ import { bathroomImages } from "@/assets/bathroom/images";
 const captions: Record<string, string> = {
   "bathroom-12": "Modern Walk-In Shower",
   "bathroom-09": "Navy Vanity with Designer Lighting",
-  "bathroom-11": "Book-Matched Marble Shower",
+  "bathroom-08": "Tub & Shower Combo",
   "bathroom-03": "Freestanding Soaking Tub",
 };
 
 // The strongest, most visually distinct finished shots — kept intentionally short so
 // the section reads as one tight portfolio rather than a long, repetitive gallery.
-// Excludes bathroom-07 — that's the hero image, so nothing repeats on the page.
+// Excludes bathroom-07 (hero image) and bathroom-10/11 (the before/after pair below)
+// so nothing repeats on the page.
 const featuredId = "bathroom-12";
-const gridOrder = ["bathroom-09", "bathroom-11", "bathroom-03"];
+const gridOrder = ["bathroom-09", "bathroom-08", "bathroom-03"];
+const classicBeforeId = "bathroom-10";
+const classicAfterId = "bathroom-11";
 const beforeAfterId = "bathroom-14";
 
 const featured = bathroomImages.find((image) => image.id === featuredId)!;
 const gridImages = gridOrder.map((id) => bathroomImages.find((image) => image.id === id)!);
+const classicBefore = bathroomImages.find((image) => image.id === classicBeforeId)!;
+const classicAfter = bathroomImages.find((image) => image.id === classicAfterId)!;
 const beforeAfter = bathroomImages.find((image) => image.id === beforeAfterId)!;
 
 function Caption({ id }: { id: string }) {
@@ -39,7 +44,32 @@ export function BathroomOurWork() {
         </p>
       </div>
 
-      <div className="relative mt-10">
+      <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6">
+        <div className="relative">
+          <ResponsiveImage
+            image={classicBefore}
+            sizes="(min-width: 768px) 50vw, 50vw"
+            className="aspect-[4/3] w-full rounded-sm object-cover"
+            loading="eager"
+          />
+          <span className="absolute left-3 top-3 rounded-sm bg-navy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+            Before
+          </span>
+        </div>
+        <div className="relative">
+          <ResponsiveImage
+            image={classicAfter}
+            sizes="(min-width: 768px) 50vw, 50vw"
+            className="aspect-[4/3] w-full rounded-sm object-cover"
+            loading="eager"
+          />
+          <span className="absolute left-3 top-3 rounded-sm bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wide text-navy-dark">
+            After
+          </span>
+        </div>
+      </div>
+
+      <div className="relative mt-14">
         <ResponsiveImage
           image={featured}
           sizes="100vw"
